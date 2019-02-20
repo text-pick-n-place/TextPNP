@@ -192,13 +192,16 @@
 		    	<br>
 		    </p>
 		    <div class="col-md-12">
-
+		    	<p style="font-size: 16pt; text-align: justify;">
 		    	<strong>scene-XXXX</strong>
 
-		          <p style="font-size: 16pt; text-align: justify;">
-
-		          <div id="text-tab">&bull;&nbsp;<strong>camera.info.txt</strong> - a text file that holds information about the scene and RGB-D camera. This information includes the environment (‘shelf’ or ‘tote’, bin ID if applicable), a list of objects in the scene (labeled by APC object ID), 3x3 camera intrinsics (for both the color and depth sensors), 4x4 camera extrinsics (to align the depth sensor to the color sensor), and 4x4 camera poses (camera-to-world coordinates) for each viewpoint. All matrices are saved in homogenous coordinates and in meters.</div>
-		          <div id="text-tab">&bull;&nbsp;<strong>frame-XXXXXX.color.png</strong> - a 24-bit PNG RGB color image captured from the Realsense camera.</div>
+		          <div id="text-tab">
+		          	<p style="font-size: 16pt; text-align: justify;">
+		          	&bull;&nbsp;<strong>camera.info.txt</strong> - a text file that holds information about the scene and RGB-D camera. This information includes the environment (‘shelf’ or ‘tote’, bin ID if applicable), a list of objects in the scene (labeled by APC object ID), 3x3 camera intrinsics (for both the color and depth sensors), 4x4 camera extrinsics (to align the depth sensor to the color sensor), and 4x4 camera poses (camera-to-world coordinates) for each viewpoint. All matrices are saved in homogenous coordinates and in meters.
+		          </p>
+		          </div>
+		          <div id="text-tab">
+		          	&bull;&nbsp;<strong>frame-XXXXXX.color.png</strong> - a 24-bit PNG RGB color image captured from the Realsense camera.</div>
 		          <div id="text-tab">&bull;&nbsp;<strong>frame-XXXXXX.depth.png</strong> - a 16-bit PNG depth image captured from the Realsense camera, aligned to its corresponding color image. Depth is saved in deci-millimeters (10-4m). Invalid depth is set to 0. For visualization, the bits per pixel have been circularly shifted to the right by 3 bits. This frame is derived from its raw counterpart (saved in folder ‘raw’) and typically contains less information.</div>
 		          <div id="text-tab">&bull;&nbsp;<strong>raw/frame-XXXXXX.depth.png</strong> - a raw 16-bit PNG depth image captured from the Realsense camera, NOT aligned to its corresponding color image. Depth is saved in deci-millimeters (10-4m). Invalid depth is set to 0. For visualization, the bits per pixel have been circularly shifted to the right by 3 bits. </div>
 
