@@ -47,10 +47,11 @@
 					<li class="hidden"> <a href="#page-top"></a> </li>
 					<li> <a class="page-scroll" href="#about">About</a> </li>
 					<li> <a class="page-scroll" href="#development">Development</a> </li>
-					<!-- <li> <a class="page-scroll" href="#services">Notices</a> </li> -->
+					<li> <a class="page-scroll" href="#code">code</a> </li>
+					<li> <a class="page-scroll" href="#dataset">Dataset</a> </li>
 					<!-- <li> <a class="page-scroll" href="#works">Portfolio</a> </li> -->
 					<li> <a class="page-scroll" href="#team">Team</a> </li>
-					<li> <a class="page-scroll" href="#sponsor">Sponsor</a> </li>
+					<!-- <li> <a class="page-scroll" href="#sponsor">Sponsor</a> </li> -->
 					<!-- <li> <a class="page-scroll" href="#schedule">Schedule</a> </li> -->
 					<!-- <li> <a class="page-scroll" href="#testimonials">Testimonials</a> </li> -->
 					<li> <a class="page-scroll" href="#contact">Contact</a> </li>
@@ -86,13 +87,19 @@
 				<hr>
 			</div>
 			<div class="row">
+				<div class="col">
+					<div class="about-text text-center center">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/TBb5fs_wuLg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+					</div>
+				</div>
 				<!-- <div class="col-md-4"><img src="img/about.jpg" class="img-responsive"></div> -->
-				<div class="col-md-10">
+				<div class="col">
 					<div class="about-text">
 						<h4>Abstract: </h4>
 						<p style="font-size: 16pt; text-align: justify;">Recent progress from Amazon Picking/Robotics Challenges advanced picking from a cluttered scene, but the problems of object placing are not much addressed. Pose-aware placing is useful in many scenarios for human and machine, e.g., a brandname facing outward on a shelf read by human customers, or a barcode facing up on a conveyer read by a machine scanner. Nevertheless, the challenges remain due to the occlusions among objects in cluttered scenes, which fail many existing object-based segmentation and pose estimation methods. We develop a pose-aware object placing system by spotting the brandname or barcode of objects in a cluttered tote, and then carrying out a sequence of actions placing the objects with desired poses on the shelves or conveyors. We present 1) the brandname-based fully convolutional network (FCN) could predict object pose and affordance and better perform pose-aware placing; 2) active manipulation with two cooperative manipulators and grippers could handle occlusions of brandname that are difficult to achieve with just one. 3) an open benchmark dataset of object, brandname, and barcode in multi-view segmentation is provided for evaluations. Analysis of success rates and failed cases are carried out and discussed for future applications. </p>
 					</div>
 				</div>
+
 				<!--div class="col-md-2"><center><img src="img/sensor.jpg" class="img-responsive"></center></div-->
 			</div>
 		</div>
@@ -102,7 +109,11 @@
 	<div id="development">
 		<div class="container">
 			<div class="section-title text-center center">
-				<h2>Developments</h2>
+				<h2>		
+					<p style="color:Orange;text-align:center;font-size: 22pt;">
+						Development
+					</p>
+				</h2>
 				<hr>
 			</div>
 
@@ -112,10 +123,10 @@
 				</div>
 				<div class="col-md-7">
 					<div class="about-text">
-						<h4>Robot System</h4>
+						<p style="color:white;text-align:left;font-size: 25pt;"><strong>Robot System</strong></p>
 					</div>
-					<p>
-						1. ????????????
+					<p style="text-align:left;font-size: 16pt;">
+						<strong>Collaborative robotic system:</strong> To solve occlusions of objects and clutter environment, two specific-function arms cooperate to execute pose-aware pick-and-place task. With the support of RGB-D cameras, Major arm with two-finger grippers focuses on pose-aware tasks and minor arm with vacuum gripper is responsible for make object pickable and the brandname visible.
 					</p>
 				</div>
 			</div>
@@ -130,9 +141,9 @@
 				</div>
 				<div class="col-md-7">
 					<div class="about-text">
-						<h4>Our Training Method</h4>
-						<p>
-							2. ??????????????
+						<p style="color:white;text-align:left;font-size: 25pt;"><strong>Our Training Method</strong></p>
+						<p style="text-align:left;font-size: 16pt;">
+							In real scenario, the text angle could be 0 360 degree. To make the vision system detect text as much as possible without moving the robot arm. The image from SR300 is rotated at 0, 90, 180, 270, and then converted to gray images which are used as inputs as FCN model. Then each connected segmented text is bounded by a rotated box. Finally, these prediction results are rotated and combined as a final prediction mask which is used for 6D text pose estimation.
 						</p>
 					</div>
 				</div>
@@ -147,9 +158,11 @@
 				</div>
 				<div class="col-md-7">
 					<div class="about-text">
-						<h4>Virtual Data Generator</h4>
-						<p>
-							3. ??????????????????? 
+						<p style="color:white;text-align:left;font-size: 25pt;"><strong>Virtual Data Generator</strong></p>
+						<p style="text-align:left;font-size: 16pt;">
+							<strong>Data collection in virtual environment: </strong>
+			
+							 To efficiently collect and label data, a virtual environment is built up. There are four cameras in virtual environment automatically collecting different data: RGB image, depth image, object mask, brand name mask, and barcode mask. In the virtual environment, object and camera can be placed anywhere without robot arm, so data collection tasks can be executed fast.
 						</p>
 					</div>
 				</div>
@@ -187,40 +200,16 @@
 
 				<br>
 				<br>
-				Both datasets share the same file structure, and contain APC-flavored scenes of shelf bins and totes, captured using an Intel® RealSense™ F200 RGB-D Camera. Each scene includes an entire tote or a single shelf bin, which can hold one or more APC objects in various orientations. Each scene is captured from different camera viewpoints. In particular, there 18 viewpoints for the tote and 15 viewpoints for the shelf bins.
-		        In terms of file structure, the RGB-D camera sequence for each scene is saved into a corresponding folder by its name (‘scene-0000’, ‘scene-0001’, etc.). The folder contents are as follows:
+				Our training dataset has two collections:
+				1) the one from real environment and robot includes image variences of the illumination changes, object reflectiveness, and different tint. 2) An virtual environment similar to the
+				real environment settings for comparisons.
+
+				
+		        In terms of file structure, the RGB-D camera sequence for each scene is saved into a corresponding folder by its name (‘scene_000000’, ‘scene_000001’, etc.).<!--  The folder contents are as follows: -->
 		        <br>
 		    	<br>
 		    </p>
-		    <div class="col-md-12">
-		    	<p style="font-size: 18pt; text-align: justify;">
-		    	<strong>scene-XXXX</strong>
 
-		          <div id="text-tab">
-		          	<p style="font-size: 14pt; text-align: justify;">
-		          	&bull;&nbsp;<strong>camera.info.txt</strong> - a text file that holds information about the scene and RGB-D camera. This information includes the environment (‘shelf’ or ‘tote’, bin ID if applicable), a list of objects in the scene (labeled by APC object ID), 3x3 camera intrinsics (for both the color and depth sensors), 4x4 camera extrinsics (to align the depth sensor to the color sensor), and 4x4 camera poses (camera-to-world coordinates) for each viewpoint. All matrices are saved in homogenous coordinates and in meters.
-		          </p>
-		          </div>
-		          <div id="text-tab">
-		          	<p style="font-size: 14pt; text-align: justify;">
-		          	&bull;&nbsp;<strong>frame-XXXXXX.color.png</strong> - a 24-bit PNG RGB color image captured from the Realsense camera.
-		          </div>
-		          </p>
-		          <div id="text-tab">
-		          	<p style="font-size: 14pt; text-align: justify;">
-		          	&bull;&nbsp;<strong>frame-XXXXXX.depth.png</strong> - a 16-bit PNG depth image captured from the Realsense camera, aligned to its corresponding color image. Depth is saved in deci-millimeters (10-4m). Invalid depth is set to 0. For visualization, the bits per pixel have been circularly shifted to the right by 3 bits. This frame is derived from its raw counterpart (saved in folder ‘raw’) and typically contains less information.
-		          </div>
-		      	</p>
-		          <div id="text-tab">
-		          	<p style="font-size: 14pt; text-align: justify;">
-		          		&bull;&nbsp;<strong>raw/frame-XXXXXX.depth.png</strong> - a raw 16-bit PNG depth image captured from the Realsense camera, NOT aligned to its corresponding color image. Depth is saved in deci-millimeters (10-4m). Invalid depth is set to 0. For visualization, the bits per pixel have been circularly shifted to the right by 3 bits.
-
-		          	<br>
-		    		<br> 
-		          	<br>
-		    		<br> 
-		          	</p>
-		          </div>
 
 				</p>
 			</div>
@@ -228,10 +217,62 @@
 			<div class="section-title center">
 				<h2 id="real-brandname-object-segmentation-dataset">Real Brandname and Object Segmentation Dataset</h2>
         		<br>
-        		<p style="font-size: 14pt;">
+        		<p style="font-size: 14pt;text-align: justify;">
      			   Real Brandname and Object Segmentation Dataset Download: <a href="http://??????">?????.zip (??? GB)</a>
+     			<br>
+     			<br>
+
+     			   We select 20 products in our dataset, and the selection is based on the following criteria: 1) the physical height of brandname region is larger than 1.5 centimeters, 2) single line brandname, and 3) the brandname instance only occurs once on the object. There are 46 scenes × 31 views × 20 objects, resulting in 28,520 images. Among them, there are 26 scenes, total 16,120 images, including brandname label. The folder contents are as follows:
+     			   <br><br>
      			</p>
 
+     			<div class="col-md-12">
+		    	<p style="font-size: 18pt; text-align: justify;">
+
+		    	<strong>img/(object_name)</strong>
+		    	</p>
+		          <div id="text-tab">
+
+		          	<p style="font-size: 14pt; text-align: justify;">
+		          	&bull;&nbsp;<strong>XXXXXX.jpg</strong> - a 24-bit JPEG RGB color image captured from the Realsense camera.
+		          </p>
+		          </div>
+		          <div id="text-tab">
+		          	<p style="font-size: 14pt; text-align: justify;">
+		          	&bull;&nbsp;<strong>depth/XXXXXX.png</strong> - a 24-bit PNG depth image captured from the Realsense camera, aligned to its corresponding color image. Depth is saved in deci-millimeters (10-4m). Invalid depth is set to 0.
+		          	</p>
+		          </div>
+		          
+		          <div id="text-tab">
+		          	<p style="font-size: 14pt; text-align: justify;">
+		          	&bull;&nbsp;<strong>register/XXXXXX.png</strong> - a 24-bit PNG register depth image captured from the Realsense camera, aligned to its corresponding color image. Depth is saved in deci-millimeters (10-4m). Invalid depth is set to 0. 
+		          	<br><br>
+		          </p>
+		          </div>
+
+		      </div>
+
+     			<div class="col-md-12">
+		    	<p style="font-size: 18pt; text-align: justify;">
+
+		    	<strong>mask/(object_name)</strong>
+		    	</p>
+
+		          <div id="text-tab">
+
+		          	<p style="font-size: 14pt; text-align: justify;">
+		          	&bull;&nbsp;<strong>XXXXXX.png</strong> - 8-bit PNG image of ground truth brandname and object segmentation labels using the annotation tool LabelMe. The pixel would be 255 if it is a object, 0 if not.
+		          </p>
+		          	<br>
+		    		<br> 
+		          </div>
+
+		        </div>
+
+     			<br>
+     			
+     			<br>
+     			<br>
 				<div class="row">
 				  <div class="col">
 				  	<img src="img/real/1.jpg"  width="15%">
@@ -275,9 +316,47 @@
 			<div class="section-title center">
 				<h2 id="virtual-brandname-object-segmentation-dataset">Virtual Brandname and Object Segmentation Dataset</h2>
         		<br>
-        		<p style="font-size: 14pt;">
+        		<p style="font-size: 14pt;text-align: justify;">
      			   Real Brandname and Object Segmentation Dataset Download: <a href="http://??????">?????.zip (??? GB)</a>
+     			<br>
+     			<br>
+     			<p style="font-size: 14pt; text-align: justify;">
+     			   There are 2 virtual dataset for training object and brandname separately. For object-based detector, the dataset have cylinder (8 objects): 116 scenes, cuboid (10 objects): 108 scenes, rounded cuboid (2 objects): 72 scenes and 15 views, resulting in 32,280 images. And the brandname dataset has 20 objects, 10 scenes and 120 views, resulting in 24,000 images.
 				</p>
+     			<br>
+     			<br>
+
+     			<div class="col-md-12">
+		    	<p style="font-size: 18pt; text-align: justify;">
+
+		    	<strong>(object_name)/Scene</strong>
+		    	</p>
+		          <div id="text-tab">
+
+		          	<p style="font-size: 14pt; text-align: justify;">
+		          	&bull;&nbsp;<strong>X_original.png</strong> - a 24-bit JPEG RGB color image captured from unity's virtual camera.
+		          </p>
+		          </div>
+		          <div id="text-tab">
+		          	<p style="font-size: 14pt; text-align: justify;">
+		          	&bull;&nbsp;<strong>X_label.png</strong> - 8-bit PNG image of ground truth brandname and barcode segmentation labels. The pixel would be 255 in value if it is a object, 0 if not.
+		          	</p>
+		          </div>
+		     	  <div id="text-tab">
+		          	<p style="font-size: 14pt; text-align: justify;">
+		          	&bull;&nbsp;<strong>X_depth.png</strong> - a 24-bit PNG register depth image captured from the Realsense camera, aligned to its corresponding color image. Depth is saved in deci-millimeters (10-4m).
+		          	</p>
+		          </div>     
+		          <div id="text-tab">
+		          	<p style="font-size: 14pt; text-align: justify;">
+		          	&bull;&nbsp;<strong>X_seg.png</strong> - a 24-bit JPEG RGB color image regarded as ground truth object segmentation labels. The pixel would be red if it is a object, green if it is a tote, blue if it is out of tote (background).
+		          	<br><br>
+		          </p>
+		          
+		          </div>
+
+		      </div>
+
 
 				<div class="row">
 				  <div class="col">
@@ -322,8 +401,23 @@
 			<div class="section-title center">
 				<h2 id="benchmark-brandname-object-dataset">Benchmark Brandname and Object Dataset</h2>
         		<br>
-        		<p style="font-size: 14pt;">
+        		<p style="font-size: 14pt; text-align: justify;">
      			   Real Brandname and Object Segmentation Dataset Download: <a href="http://??????">?????.zip (??? GB)</a>
+     			<br>
+     			<br>
+     			<p style="font-size: 14pt; text-align: justify;">
+     				There are 2 benchmark dataset for object and brandname separately. 
+					Each benchmark dataset contains 60 scenes with 980 unique object poses seen from both SR300 camera's viewpoints during experiment of active manipulation. In total, there are 200 images with manually annotated ground truth segmentation labels. All the scenes were captured in our lab environment (at NCTU), with strong overhead directional lights.
+					Each scene (in addition to the files described here), contains: 
+					<br>
+					<br>
+
+		          	&bull;&nbsp;<strong>img/X_obj/scene-XXXXXX</strong> - a 24-bit JPEG RGB color image captured from the Realsense camera.
+					<br>
+					&bull;&nbsp;<strong>mask/X_obj/scene-XXXXXX</strong> - 8-bit PNG image of ground truth object segmentation labels using the annotation tool LabelMe. Divide each pixel value by 12 to obtain label range [0,21].     			
+
+     			<br>
+     			<br>     			
      			</p>
 				<div class="row">
 				  <div class="col">
