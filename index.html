@@ -307,11 +307,12 @@
 				<h2 id="virtual-brandname-object-segmentation-dataset">Virtual Brandname and Object Segmentation Dataset</h2>
         		<br>
         		<p style="font-size: 14pt;text-align: justify;">
-     			   Real Brandname and Object Segmentation Dataset Download: <a href="http://??????">?????.zip (??? GB)</a>
+     			   Virtual Brandname and Object Segmentation Dataset Download: <a href="http://??????">?????.zip (??? GB)</a>
      			<br>
      			<br>
      			<p style="font-size: 14pt; text-align: justify;">
-     			   There are two virtual dataset for training object and brandname separately. For object-based detector, the dataset have cylinder (8 objects): 464 scenes, cuboid (10 objects): 432 scenes, rounded cuboid (2 objects): 288 scenes and 15 views, resulting in 129,120 images. And the brandname dataset has 20 objects, 40 scenes and 54 views, resulting in 43,200 images.
+     			   1) Objects: For object-oriented dataset, due to the differ- ent shape of the object, there are 3 kinds of placing strategy and number of scene. The dataset have cylinder (8 objects): 116 scenes, cuboid (10 bjects): 108 scenes, rounded cuboid (2 objects): 72 scenes, totally 2152 scenes × 15 views × 4 modes of adding noise, resulting in 129,120 images.<br>
+     			   2) Brandnames: The brandname-oriented dataset has 20 objects × 10 scenes × 120 views × 4 modes of adding noise, resulting in 96,000 images. Among them, there are 81696 images including brandname label and 66032 images including barcode label.
 				</p>
      			<br>
      			<br>
@@ -324,22 +325,22 @@
 		          <div id="text-tab">
 
 		          	<p style="font-size: 14pt; text-align: justify;">
-		          	&bull;&nbsp;<strong>X_original.png</strong> - a 24-bit JPEG RGB color image captured from unity's virtual camera.
+		          	&bull;&nbsp;<strong>X_original.png</strong> - a 24-bit PNG RGB color image captured from unity's virtual camera.
 		          </p>
 		          </div>
 		          <div id="text-tab">
 		          	<p style="font-size: 14pt; text-align: justify;">
-		          	&bull;&nbsp;<strong>X_label.png</strong> - 8-bit PNG image of ground truth brandname and barcode segmentation labels. The pixel would be 255 in value if it is a object, 0 if not.
+		          	&bull;&nbsp;<strong>X_label.png</strong> - 8-bit PNG image of ground truth brandname and barcode segmentation labels. The pixel would be 255 in value if it is brandname, and barcode in 128.
 		          	</p>
 		          </div>
-		     	  <div id="text-tab">
+		     	  <!--div id="text-tab">
 		          	<p style="font-size: 14pt; text-align: justify;">
 		          	&bull;&nbsp;<strong>X_depth.png</strong> - a 24-bit PNG register depth image captured from the Realsense camera, aligned to its corresponding color image. Depth is saved in deci-millimeters (10-4m).
 		          	</p>
-		          </div>     
+		          </div-->     
 		          <div id="text-tab">
 		          	<p style="font-size: 14pt; text-align: justify;">
-		          	&bull;&nbsp;<strong>X_seg.png</strong> - a 24-bit JPEG RGB color image regarded as ground truth object segmentation labels. The pixel would be red if it is a object, green if it is a tote, blue if it is out of tote (background).
+		          	&bull;&nbsp;<strong>X_seg.png</strong> - a 24-bit PNG RGB color image regarded as ground truth object segmentation labels. The pixel would be red if it is an object, green if it is tote, blue if it is out of tote (background).
 		          	<br><br>
 		          </p>
 		          
@@ -392,7 +393,7 @@
 				<h2 id="benchmark-brandname-object-dataset">Benchmark Brandname and Object Dataset</h2>
         		<br>
         		<p style="font-size: 14pt; text-align: justify;">
-     			   Real Brandname and Object Segmentation Dataset Download: <a href="http://??????">?????.zip (??? GB)</a>
+     			   Benchmark Brandname and Object Segmentation Dataset Download: <a href="http://??????">?????.zip (??? GB)</a>
      			<br>
      			<br>
      			<p style="font-size: 14pt; text-align: justify;">
