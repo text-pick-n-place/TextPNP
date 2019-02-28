@@ -96,7 +96,7 @@
 				<div class="col">
 					<div class="about-text">
 						<h4>Abstract: </h4>
-						<p style="font-size: 16pt; text-align: justify;">Recent progress from Amazon Picking/Robotics Challenges advanced picking from a cluttered scene, but the problems of object placing are not much addressed. Pose-aware placing is useful in many scenarios for human and machine, e.g., a brandname facing outward on a shelf read by human customers, or a barcode facing up on a conveyer read by a machine scanner. Nevertheless, the challenges remain due to the occlusions among objects in cluttered scenes, which fail many existing object-based segmentation and pose estimation methods. We develop a pose-aware object placing system by spotting the brandname or barcode of objects in a cluttered tote, and then carrying out a sequence of actions placing the objects with desired poses on the shelves or conveyors. We present 1) the brandname-based fully convolutional network (FCN) could predict object pose and affordance and better perform pose-aware placing; 2) active manipulation with two cooperative manipulators and grippers could handle occlusions of brandname that are difficult to achieve with just one. 3) an open benchmark dataset of object, brandname, and barcode in multi-view segmentation is provided for evaluations. Analysis of success rates and failed cases are carried out and discussed for future applications. </p>
+						<p style="font-size: 16pt; text-align: justify;">  The Amazon Picking/Robotics Challenges showed significant progress in object picking from a cluttered scene, yet object placing remains challenging. Pose-aware placing based on human and machine readable pieces on an object is useful. For example, the brandname of an object placed on a shelf should be facing the human customers. Similarly, the barcode of an object placed on a conveyer should be facing a machine scanner. There are robotic vision challenges in the object placing task: a) the semantics and geometry of the object to be placed need to be analysed jointly; b) and the occlusions among objects in a cluttered scene could make it hard for proper understanding and manipulation. To overcome these challenges, we develop a pose-aware placing system by spotting the semantic labels (e.g., brandnames) of objects in a cluttered tote, and then carrying out a sequence of actions to place the objects on a shelf or a conveyor with desired poses. Our major contributions include 1) providing an open benchmark dataset of objects, brandnames, and barcodes with multi-view segmentation for training and evaluations; 2) carrying out comprehensive evaluations for our brandname-based fully convolutional network (FCN) that can predict affordance and grasp to achieve pose-aware placing, whose success rates decrease along with clutters; 3) showing that active manipulation with two cooperative manipulators and grippers can effectively handle occlusions of brandnames. We analyzed the success rates and discussed the failure cases to provide insights for future applications. </p>
 					</div>
 				</div>
 
@@ -126,8 +126,7 @@
 						<p style="color:white;text-align:left;font-size: 25pt;"><strong>Robot System</strong></p>
 					</div>
 					<p style="text-align:left;font-size: 16pt;">
-						<strong>Collaborative robotic system:</strong> To solve occlusions of objects and clutter environment, two specific-function arms cooperate to execute pose-aware pick-and-place task. With the support of RGB-D cameras, Major arm with two-finger grippers focuses on pose-aware tasks and minor arm with vacuum gripper is responsible for make object pickable and the brandname visible.
-					</p>
+						<strong>Collaborative robotic system:</strong> we propose a dual-arm cooperative system to actively manipulate the scene to improve perception for placing. The gripper arm moves an occluding object to reveal information (the invisible brandname) hidden underneath, and the two-finger arm further predicts grasp using the brandname and completes pose-aware placing.
 				</div>
 			</div>
 			
@@ -154,15 +153,15 @@
 
 			<div class="row">
 				<div class="col-md-5">
-					<center><img src="img/paperimg/unity.png" class="img-responsive"></center>
+					<center><img src="img/paperimg/bn-benchmark-dataset.png" class="img-responsive"></center>
 				</div>
 				<div class="col-md-7">
 					<div class="about-text">
 						<p style="color:white;text-align:left;font-size: 25pt;"><strong>Virtual Data Generator</strong></p>
 						<p style="text-align:left;font-size: 16pt;">
 							<strong>Data collection in virtual environment: </strong>
-			
-							 To efficiently collect and label data, a virtual environment is built up. There are four cameras in virtual environment automatically collecting different data: RGB image, depth image, object mask, brand name mask, and barcode mask. In the virtual environment, object and camera can be placed anywhere without robot arm, so data collection tasks can be executed fast.
+							Data collection of training data in real (left) and virtual (right) environments. Upper-left: Samples of objects and their brandnames (red polygons). Top-right: creating an object model via the 3D builder in Unity. Each scene contains only one object, given the findings that batch-training with a single object could yield deep models that perform good inference results on scenes with multiple objects.
+							 <!-- To efficiently collect and label data, a virtual environment is built up. There are four cameras in virtual environment automatically collecting different data: RGB image, depth image, object mask, brand name mask, and barcode mask. In the virtual environment, object and camera can be placed anywhere without robot arm, so data collection tasks can be executed fast. -->
 						</p>
 					</div>
 				</div>
@@ -307,10 +306,11 @@
 				<h2 id="virtual-brandname-object-segmentation-dataset">Virtual Brandname and Object Segmentation Dataset</h2>
         		<br>
         		<p style="font-size: 14pt;text-align: justify;">
-        			
+<!--         			
         			Virtual Object Segmentation Dataset Download: <a href="https://drive.google.com/open?id=1pTHBihOfWR0EIXRLpNak4PWj2KUc7AZO">virtual_object.tar.gz (17 GB)</a>
-        			<br>
+        			<br> -->
      			    Virtual Brandname Segmentation Dataset Download: <a href="https://drive.google.com/open?id=12mLjojKKRuTTzThha4JaVfLbZIG7qf5D">virtual_brandname.tar.gz (6 GB)</a>
+     			</p>
      			<br>
      			<br>
      			<p style="font-size: 14pt; text-align: justify;">
