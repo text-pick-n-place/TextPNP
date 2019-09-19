@@ -1,1 +1,1 @@
-# text-pick-n-place.github.io
+# text-pick-n-place.github.io/TextPNP/
